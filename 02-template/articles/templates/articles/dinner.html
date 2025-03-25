@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+{% extends "articles/base.html" %}
+
+{% block content %}
   <p>{{ picked }} 메뉴는 {{ picked|length }}글자 입니다.</p>
   <h2>메뉴판</h2>
   <ul>
@@ -18,5 +13,4 @@
   {% else %}
     <p>아직 메뉴가 남았습니다.</p>
   {% endif %}
-</body>
-</html>
+{% endblock content %}

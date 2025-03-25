@@ -29,10 +29,10 @@ def throw(request):
 
 
 def catch(request):
-    print(request)  # <WSGIRequest: GET '/catch/?message=ssafy'>
-    print(type(request))  # <class 'django.core.handlers.wsgi.WSGIRequest'>
-    print(request.GET)  # <QueryDict: {'message': ['ssafy']}>
-    print(request.GET.get('message'))  # ssafy
+    # print(request)  # <WSGIRequest: GET '/catch/?message=ssafy'>
+    # print(type(request))  # <class 'django.core.handlers.wsgi.WSGIRequest'>
+    # print(request.GET)  # <QueryDict: {'message': ['ssafy']}>
+    # print(request.GET.get('message'))  # ssafy
     message = request.GET.get('message')
     context = {
         'message': message,
