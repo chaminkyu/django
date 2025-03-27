@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from .models import Article
 
-# Create your views here.
-# 전체 게시글 조회 후 응답하는 함수
+
+# 메인 페이지를 응답하는 함수 (+ 전체 게시글 목록)
 def index(request):
-    # 1. DB에 전체 게시글 요청
+    # DB에 전체 게시글 요청 후 가져오기
     articles = Article.objects.all()
     context = {
         'articles': articles,
