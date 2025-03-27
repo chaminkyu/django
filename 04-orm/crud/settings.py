@@ -31,7 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 1. 직접 생성한 앱
     'articles',
+    # 2. 설치한 앱(3rd party library)
+    'django_extensions',
+    # 3. 내장 앱
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
