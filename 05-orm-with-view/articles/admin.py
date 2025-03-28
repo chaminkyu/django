@@ -4,4 +4,5 @@ from .models import Article
 
 
 # Register your models here.
+# admin 사이트(site)에 등록(register) 한다.
 admin.site.register(Article)
