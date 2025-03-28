@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% comment %} 템플릿 상속 {% endcomment %}
+{% block content %}
+{% comment %} name: context의 key 
+---> value가 우리 눈에 보인다  {% endcomment %}
+     <h1>Hello, {{ name }}</h1>
+
+    {% comment %} url named pattern {% endcomment %}
+    {% comment %} {% url "namespace:name" %} {% endcomment %}
+    <a href="{% url "articles:dinner" %}">dinner</a>
+    <a href="{% url "articles:search" %}">search</a>
+    <a href="{% url "articles:throw" %}">throw</a>
+    {% comment %} 별표 세 개!!! {% endcomment %}
+    {% comment %} url에 variable routing 있으면 url name pattern에 변수 코드 작성 {% endcomment %}
+    {% comment %} 변수를 views.pyf로 context로 넘겨줘야 한다. {% endcomment %}
+    <a href="{% url "articles:detail" number %}">detail</a>
+
+{% endblock content %}

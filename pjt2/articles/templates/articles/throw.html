@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% comment %} action : 요청 보낼 url ---> named url pattern {% endcomment %}
+{% comment %} 2번 방법 {% url namespace:name %} {% endcomment %}
+{% comment %} 1번 방법 https://127.0.0.1:8000/articles/catch/ {% endcomment %}
+<form action="{% url 'articles:catch' %}" method = "GET">
+    <input type="text" name="throw">
+    <input type="submit">
+</form>
+{% endblock content %}
