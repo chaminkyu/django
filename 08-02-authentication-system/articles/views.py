@@ -1,7 +1,13 @@
 from django.shortcuts import render, redirect
+<<<<<<< HEAD
 from .models import Article
 from .forms import ArticleForm
 from django.contrib.auth.decorators import login_required
+=======
+from django.contrib.auth.decorators import login_required
+from .models import Article
+from .forms import ArticleForm
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 
 
 def index(request):
@@ -19,6 +25,10 @@ def detail(request, pk):
     }
     return render(request, 'articles/detail.html', context)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @login_required
 def create(request):
     if request.method == 'POST':
@@ -33,12 +43,20 @@ def create(request):
     }
     return render(request, 'articles/create.html', context)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @login_required
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
     article.delete()
     return redirect('articles:index')
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @login_required
 def update(request, pk):
     article = Article.objects.get(pk=pk)

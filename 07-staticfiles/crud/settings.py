@@ -130,7 +130,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = 'media/'
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

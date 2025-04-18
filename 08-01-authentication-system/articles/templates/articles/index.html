@@ -7,12 +7,24 @@
 </head>
 <body>
   <h1>안녕하세요, {{ user.username }}님</h1>
+<<<<<<< HEAD
   <h1>Articles</h1>
   <a href="{% url "articles:create" %}">CREATE</a>
+=======
+
+  <h1>Articles</h1>
+  <a href="{% url "articles:create" %}">CREATE</a>
+  <a href="{% url "accounts:login" %}">로그인</a>
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
   <form action="{% url "accounts:logout" %}" method="POST">
     {% csrf_token %}
     <input type="submit" value="로그아웃">
   </form>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
   <hr>
   {% for article in articles %}
     <p>글 번호: {{ article.pk }}</p>

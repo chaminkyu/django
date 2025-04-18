@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts import views
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('articles/', include('articles.urls')),

@@ -1,6 +1,10 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 from django.db.models import Count
 
 from .models import Article, Comment
@@ -38,10 +42,17 @@ def article_list(request):
 def article_detail(request, article_pk):
     # 단일 게시글 데이터 조회
     article = Article.objects.get(pk=article_pk)
+<<<<<<< HEAD
     # 단일 게시글 데이터 조회 + 그 단일 게시글에 작성된 댓글의 개수도 계산해달라고 DB에 한 번에 요청
     article = Article.objects.annotate(num_of_comments=Count('comment')).get(pk=article_pk)
     # 기존에 article 객체에는 없었지만 결과에만 잠시 포함된 데이터(실제 article 테이블의 털럼이 변한 것은 아님님)
     print(article.num_of_comments) # 2
+=======
+    # 단일 게시글 데이터 조회 + 그 단일 게시글에 작성된 댓글의 개수도 계산해달라고 DB에 한번에 요청
+    article = Article.objects.annotate(num_of_comments=Count('comment')).get(pk=article_pk)
+    # 기존에 article 객체에는 없었지만 결과에만 잠시 포함된 신규 데이터 (실제 article 테이블의 컬럼이 변한 것은 아님)
+    print(article.num_of_comments)  # 특정 게시글의 댓글 개수
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 
     if request.method == 'GET':
         # ArticleSerializer 클래스로 직렬화를 진행
@@ -61,6 +72,10 @@ def article_detail(request, article_pk):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @api_view(['GET'])
 def comment_list(request):
     # 댓글 전체 조회
@@ -69,6 +84,10 @@ def comment_list(request):
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @api_view(['GET', 'PUT', 'DELETE'])
 def comment_detail(request, comment_pk):
     # 특정 댓글 데이터를 조회
@@ -87,18 +106,34 @@ def comment_detail(request, comment_pk):
             serializer.save()
             return Response(serializer.data)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
     elif request.method == 'DELETE':
         comment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @api_view(['POST'])
 def comment_create(request, article_pk):
     # 어떤 게시글에 작성되는 댓글인지 단일 게시글을 조회
     article = Article.objects.get(pk=article_pk)
+<<<<<<< HEAD
     # 사용자가 보낼 댓글 데이터를 활용해 가공
+=======
+    # 사용자가 보낸 댓글 데이터를 활용해 가공
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
     serializer = CommentSerializer(data=request.data)
     # 유효한지 검사
     if serializer.is_valid(raise_exception=True):
         # 추가 데이터를 save 메서드의 인자로 작성
         serializer.save(article=article)
+<<<<<<< HEAD
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+=======
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e

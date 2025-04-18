@@ -34,6 +34,7 @@ def detail(request, pk):
 
 # 사용자로부터 데이터를 받아 저장하고 저장이 완료되었다는 페이지를 제공하는 함수
 # def create(request):
+<<<<<<< HEAD
 #     # 사용자로부터 받은 데이터를 인자로 통째로 넣어서 form 인스턴스 생성 
 #     form = ArticleForm(request.POST)
 
@@ -49,11 +50,32 @@ def detail(request, pk):
 #         'form': form, 
 #     }
 #     return render(request, 'articles/new,html', context)
+=======
+#     # 사용자로 부터 받은 데이터를 인자로 통째로 넣어서 form 인스턴스 생성
+#     form = ArticleForm(request.POST)
+    
+#     # 데이터가 유효한지 검사 (유효성 검사)
+#     if form.is_valid():
+#         # 유효성 검사를 통과 했다면 (데이터 저장)
+#         article = form.save()
+#         return redirect('articles:detail', article.pk)
+#     # 유효성 검사를 통과하지 못했다면
+#     # 현재 사용자가 게시글을 작성하는 템플릿(new 페이지)을 다시 한번 응답
+#     context = {
+#         # 왜 유효성 검사를 통과하지 못했는지에 대한 에러메시지를 담고 있음
+#         'form': form,
+#     }
+#     return render(request, 'articles/new.html', context)
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 
 def create(request):
     # 1. 요청 메서드가 POST 라면
     if request.method == 'POST':
+<<<<<<< HEAD
         # 1.1 사용자로부터 받은 데이터를 인자로 통째로 넣어서 form 인스턴스 생성
+=======
+        # 1.1 사용자로 부터 받은 데이터를 인자로 통째로 넣어서 form 인스턴스 생성
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
         form = ArticleForm(request.POST)
         # 1.2 유효성 검사
         if form.is_valid():
@@ -61,17 +83,29 @@ def create(request):
             article = form.save()
             # 1.4 상세 페이지로 리다이렉트
             return redirect('articles:detail', article.pk)
+<<<<<<< HEAD
     # 2. 요청 메서드가 POST가 아니라면(GET, PUT, DELETE...)
     else:
         # 2.1 ArticleForm 인스턴스를 생성
         form = ArticleForm()
     # case 1: 1.2에서 내려왔을 때 : 에러 메시지를 담은 form
     # case 2: 2.1이 끝나고 내려왔을 때 : 빈 form
+=======
+    # 2. 요청 메서드가 POST가 아니라면 (GET, PUT, DELETE...)
+    else:
+        # 2.1 ArticleForm 인스턴스를 생성
+        form = ArticleForm()
+    # case 1 : 1.2에서 내려왔을 때 : 에러메시지를 담은 form
+    # case 2 : 2.1이 끝나고 내려왔을 때 : 빈 form
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
     context = {
         'form': form,
     }
     return render(request, 'articles/create.html', context)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 
 
 def delete(request, pk):
@@ -82,17 +116,54 @@ def delete(request, pk):
     return redirect('articles:index')
 
 
-def edit(request, pk):
-    # 몇번 게시글 정보를 보여줄지 조회
+# def edit(request, pk):
+#     # 몇번 게시글 정보를 보여줄지 조회
+#     article = Article.objects.get(pk=pk)
+#     form = ArticleForm(instance=article)
+#     context = {
+#         'article': article,
+#         'form': form,
+#     }
+#     return render(request, 'articles/edit.html', context)
+
+
+# def update(request, pk):
+#     # 어떤 글을 수정하는지 먼저 조회
+#     article = Article.objects.get(pk=pk)
+
+#     # 사용자가 새로 입력한 데이터를 받아서 form 인스턴스 생성
+#     form = ArticleForm(request.POST, instance=article)
+
+#     if form.is_valid():
+#         form.save()
+#         return redirect('articles:detail', article.pk)
+#     context = {
+#         'article': article,
+#         'form': form,
+#     }
+#     return render(request, 'articles/edit.html', context)
+    
+def update(request, pk):
     article = Article.objects.get(pk=pk)
+<<<<<<< HEAD
     form = ArticleForm(instance=article)
+=======
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:detail', article.pk)
+    else: 
+        form = ArticleForm(instance=article)
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
     context = {
         'article': article,
         'form': form,
     }
-    return render(request, 'articles/edit.html', context)
+    return render(request, 'articles/update.html', context)
 
 
+<<<<<<< HEAD
 # def update(request, pk):
 #     # 어떤 글을 수정하는지 먼저 조회
 #     article = Article.objects.get(pk=pk)
@@ -123,3 +194,5 @@ def update(request, pk):
         'form': form,
     }
     return render(request, 'articles/update.html', context)
+=======
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e

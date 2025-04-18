@@ -21,7 +21,11 @@ def detail(request, pk):
 
 def create(request):
     if request.method == 'POST':
+<<<<<<< HEAD
         # form = ArticleForm(request.POST, files=request.FILES)
+=======
+        # form = ArticleForm(data=request.POST, files=request.FILES)
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save()

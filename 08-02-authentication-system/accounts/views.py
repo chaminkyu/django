@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
+<<<<<<< HEAD
 from django.contrib.auth.forms import AuthenticationForm
+=======
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import update_session_auth_hash
@@ -11,6 +15,10 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 def login(request):
     if request.user.is_authenticated:
         return redirect('articles:index')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         # form = AuthenticationForm(request, data=request.POST)
@@ -25,6 +33,10 @@ def login(request):
     }
     return render(request, 'accounts/login.html', context)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @login_required
 def logout(request):
     auth_logout(request)
@@ -34,19 +46,28 @@ def logout(request):
 def signup(request):
     if request.user.is_authenticated:
         return redirect('articles:index')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('articles:index')
     else:
+<<<<<<< HEAD
         # 회원가입 템플릿과 외원정보 작성을 위한 form을 응답
+=======
+        # 회원가입 템플릿과 회원정보 작성을 위한 form을 응답
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
         form = CustomUserCreationForm()
     context = {
         'form': form,
     }
     return render(request, 'accounts/signup.html', context)
 
+<<<<<<< HEAD
 @login_required
 def delete(request):
     # 유저 객체를 삭제
@@ -57,12 +78,31 @@ def delete(request):
     request.user.delete()
     return redirect('articles:index')
 
+=======
+
+# 유저 객체를 삭제
+@login_required
+def delete(request):
+    # 유저를 조회해야 할까? 필요 없음
+    # 애초에 탈퇴라는건 로그인이 되어있는 상태로 요청을 보내기 때문
+    # 그래서 요청 객체안에 이미 어떤 사용자가 요청을 보내는 건지 정보가 들어있음
+    # request.user
+    # print(request.user)
+    request.user.delete()
+    return redirect('articles:index')
+
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @login_required
 def update(request):
     if request.method == 'POST':
         # 기존 유저 정보 (request.user)
+<<<<<<< HEAD
         form =CustomUserChangeForm(request.POST, instance=request.user)
         # form =CustomUserChangeForm(data=request.POST, instance=request.user)
+=======
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
         if form.is_valid():
             form.save()
             return redirect('articles:index')
@@ -73,6 +113,10 @@ def update(request):
     }
     return render(request, 'accounts/update.html', context)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
 @login_required
 def change_password(request, user_pk):
     if request.method == 'POST':
@@ -85,8 +129,15 @@ def change_password(request, user_pk):
             return redirect('articles:index')
     else:
         form = PasswordChangeForm(request.user)
+<<<<<<< HEAD
         context = {
             'form': form,
         }
         return render(request, 'accounts/change_password.html', context)
 
+=======
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/change_password.html', context)
+>>>>>>> 1bb3fbce50aeea455c64baacf7a4100358d0dd1e
